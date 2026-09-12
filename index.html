@@ -67,6 +67,11 @@
       </a>
       
       <p class="mt-4 text-xs text-gray-500">Free to join • Instant access • No spam</p>
+
+      <!-- 5 Second Redirect Countdown -->
+      <p id="redirectCountdown" class="mt-3 text-xs text-emerald-400">
+        Redirecting in 5 seconds...
+      </p>
     </div>
   </div>
 
@@ -200,12 +205,29 @@
       document.querySelector('a[href*="telegram.me"]').addEventListener('click', function() {
         fbq('track', 'Lead');
       });
+
+      // 5 Second Automatic Redirect
+      let redirectSeconds = 5;
+      const redirectCountdown = document.getElementById('redirectCountdown');
+      const redirectURL = 'https://telegram.me/+Psd7zRivnAs3OTZk';
+
+      const redirectTimer = setInterval(function() {
+        redirectSeconds--;
+
+        if (redirectSeconds > 0) {
+          redirectCountdown.textContent = 'Redirecting in ' + redirectSeconds + ' seconds...';
+        } else {
+          clearInterval(redirectTimer);
+          redirectCountdown.textContent = 'Redirecting now...';
+          window.location.href = redirectURL;
+        }
+      }, 1000);
   </script>
 
   <!-- Meta Pixel Noscript Fallback -->
   <noscript>
     <img height="1" width="1" style="display:none" 
-         src="https://www.facebook.com/tr?id=1077594018533809&ev=PageView&noscript=1"/>
-  </noscript>
-</body>
+         src="https://www.facebook.com/tr?id=1077594018533809&ev=PageView&noscript=1"/> 
+  </noscript> 
+</body> 
 </html>
