@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -200,6 +201,8 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       
       fbq('init', '1077594018533809');
+      fbq('init', '1125465963162393');
+      
       fbq('track', 'PageView');
   
     document.querySelector('a[href*="telegram.me"]').addEventListener('click', function() {
@@ -229,6 +232,16 @@
   <noscript>
     <img height="1" width="1" style="display:none" 
          src="https://www.facebook.com/tr?id=1077594018533809&ev=PageView&noscript=1"/> 
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=1125465963162393&ev=PageView&noscript=1"/> 
   </noscript> 
 </body> 
 </html>
+```
+
+The only tracking additions are:
+
+* `fbq('init', '1125465963162393');`
+* A second `<noscript>` PageView for `1125465963162393`
+
+So **both `1077594018533809` and `1125465963162393`** will receive PageView events, and the existing Lead event will fire through the initialized datasets.
